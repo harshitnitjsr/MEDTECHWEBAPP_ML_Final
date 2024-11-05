@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CHATBOT</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+       background-color:black;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh; /* Ensures the background covers the entire viewport height */
+        /* Ensures the background covers the entire viewport height */
+      }
+
+      .card {
+        margin: 20px auto;
+        width: 50%;
+        border: 2px solid #17a2b8;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        transition: box-shadow 0.3s ease;
+        height: 5%;
+        background-color: #ffffff; /* Add a white background */
+      }
+
+      .card:hover {
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
+      }
+      .card-header {
+        color: white;
+        background-color: #17a2b8; /* Add a blue background color */
+        border-bottom: 2px solid #ffffff; /* Add a white border */
+      }
+      .btn {
+        background-color: #17a2b8;
+        color: white;
+      }
+
+      .btn:hover {
+        background-color: #135a6d; /* Darker shade on hover */
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      button:hover {
+        background-color: #17a2b8;
+      }
+      .recommend {
+        color: rgb(25, 25, 26);
+      }
+      .di {
+        color: black;
+      }
+      #res {
+        color: rgb(17, 17, 17);
+      }
+      h2,
+      h3,
+      p {
+        color: #333; /* Dark grey text color */
+      }
+      .navbar {
+        background-color: black;
+        overflow: hidden;
+    }
+    
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    .navbar img {
+        float: left;
+        height: 40px;
+        margin-right: 15px;
+    }
+    .bada{
+      background: url("https://th.bing.com/th/id/OIG..ZCrh_PmUSpAY5sExlhZ?pid=ImgGn") center no-repeat;
+      {% comment %} background-size: center no-repeat; {% endcomment %}
+      height:100vh;
+    }
+    .navbar a:hover {
+        {% comment %} background-color: #ddd; {% endcomment %}
+        text-decoration: underline; /* Add this line to underline text on hover */
+        color: white; /* You can remove this line as it's not needed for underlining */
+    }
+    </style>
+  </head>
+  <body>
+    <header class=" bg-black text-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-black text-white border-bottom">
+        <div class="container">
+          <img
+          src="https://i.ibb.co/w0Xfj9d/IMG-20231122-WA0017.jpg"
+          class="img-fluid"
+          alt="Logo"
+          style="height:50px; width:60px"
+      />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="text-white">Menu</span>
+          </button>
+
+          <div class="collapse navbar-collapse text-white" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+             
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  Home
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/about"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  About
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/contact"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  Contact
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/medicine-recommendation"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  MedicineRecommendation
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://127.0.0.1:8000/#"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  DiseasePredictor
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://127.0.0.1:8000/mental/"
+                  class="nav-link text-white "
+                  activeClassName="text-orange-700"
+                >
+                  MentalHealthAssessment
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://127.0.0.1:8000/skin"
+                  class="nav-link text-white text-white"
+                  activeClassName="text-orange-700"
+                >
+                  SkinDiseasePredictor
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a href="http://127.0.0.1:8000/xray"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                 Pneumonia-Xray
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a href="http://127.0.0.1:8000/chatbot/"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  MedicalChatbot
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="bada">
+    <div class="main">
+      <div class="card text-center">
+        <div
+          class="card-header"
+          style="color: black"
+          style="background-color: black"
+        >
+          {% if answer %}
+          <h2 class="mb-4 di" style="font-weight: 700">
+            Chatbot:
+            <h3>{{question}}</h3>
+            <p id="res">{{ answer }}</p>
+          </h2>
+          <hr />
+
+          {% else %}
+
+         
+
+          {% endif %}
+        </div>
+        <form action="" method="POST" id="symptomForm">
+          {% csrf_token %}
+          <label for="Chatbot">enter your query:</label>
+          <input
+            type="text"
+            name="chatbot"
+            class="form-control"
+            placeholder="ask me anything"
+          />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="container mt-5"></div>
+    </div></div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

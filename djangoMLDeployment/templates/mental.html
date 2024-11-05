@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MENTAL HEALTH STATUS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Add a custom class to the buttons you want to style and animate on hover */
+.custom-button {
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.custom-button:hover {
+  background-color: #00FF00; /* Change the background color on hover */
+  transform: scale(1.1); /* Scale the button on hover */
+}
+
+
+      {% comment %} button:hover.btn-success {
+        background-color: #28a745 !important; /* Add btn-success class on hover */
+      } {% endcomment %}
+      body {
+        background-color: #000; /* Set background color to black */
+        color: #fff; /* Set text color to white for better contrast */
+      }
+
+      .card {
+        margin: 20px auto;
+        width: 60%; /* Adjust the width as per your preference */
+        border: 1px solid #17a2b8;
+        border-radius: 15px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .navbar {
+        
+        background-color: black;
+        overflow: hidden;
+    }
+    
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    .navbar img {
+        
+        height: 40px;
+        margin-right: 15px;
+    }
+    button:hover {
+      background-color: blue;
+      {% comment %} margin: 0 auto; {% endcomment %}
+    }
+    
+    .navbar a:hover {
+        {% comment %} background-color: #ddd; {% endcomment %}
+        text-decoration: underline; /* Add this line to underline text on hover */
+        color: white; /* You can remove this line as it's not needed for underlining */
+    }
+
+    </style>
+  </head>
+  <body>
+    <header class=" bg-black text-white">
+      <nav class="navbar navbar-expand-lg navbar-light bg-black text-white border-bottom">
+        <div class="container">
+          
+          <img
+          src="https://i.ibb.co/w0Xfj9d/IMG-20231122-WA0017.jpg"
+          class="img-fluid"
+          alt="Logo"
+          style="height:50px; width:60px"
+      />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="text-white">Menu</span>
+          </button>
+
+          <div class="collapse navbar-collapse text-white" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  Home
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/about"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  About
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/contact"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  Contact
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://localhost:5173/medicine-recommendation"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  MedicineRecommendation
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://127.0.0.1:8000/#"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  DiseasePredictor
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://127.0.0.1:8000/mental/"
+                  class="nav-link text-white "
+                  activeClassName="text-orange-700"
+                >
+                  MentalHealthAssessment
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a
+                  href="http://127.0.0.1:8000/skin"
+                  class="nav-link text-white text-white"
+                  activeClassName="text-orange-700"
+                >
+                  SkinDiseasePredictor
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a href="http://127.0.0.1:8000/xray"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                 Pneumonia-Xray
+                </a>
+              </li>
+              <li class="nav-item text-white">
+                <a href="http://127.0.0.1:8000/chatbot/"
+                  class="nav-link text-white"
+                  activeClassName="text-orange-700"
+                >
+                  MedicalChatbot
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="card text-center text-white bg-dark">
+      <div class="card-header">
+        {% if answer %}
+        <div class="alert {% if answer == "DOCTOR REQUIRED"  %}alert-danger{% elif answer == "enter valid gender" %}alert-warning{% else %}alert-success{% endif %}" role="alert">
+          {{answer}}
+        </div>
+        
+        {% endif %}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">MENTAL STATUS</h5>
+        <p class="card-text">
+          With supporting text below as a natural lead-in to additional content.
+        </p>
+        {% comment %} <a href="http://localhost:5173/" class="btn btn-primary">HOME</a> {% endcomment %}
+        <a href="http://localhost:5173/" class="btn btn-primary custom-button">HOME</a>
+        <a href="http://localhost:5173/mentalhealth" class="btn btn-primary custom-button">SCORE[depression, anxiety, adhd]</a>
+      </div>
+    </div>
+    <div class="card text-center text-white bg-dark">
+      <form action="" method="POST" id="mentalform">
+        {% csrf_token %}
+        <div class="card-body">
+          <label for="gender" ><h2>Gender:</h2></label
+          ><input
+            class="form-control form-control-sm"
+            type="text"
+            name="gender"
+            placeholder="enter gender male or female"
+            required
+          />
+          <label for="age"><h2>Age:</h2></label
+          ><input
+            class="form-control form-control-sm"
+            type="number"
+            name="age"
+            placeholder="enter age"
+            required
+          />
+          <label for="cgpa"><h2>Income:</h2></label
+          ><input
+            class="form-control form-control-sm "
+            type="number"
+            name="cgpa"
+            placeholder="annual income in lakhs"
+            required
+          />
+          <label for="incidence"><h2>Incidence:</h2></label
+          ><input
+            class="form-control form-control-sm"
+            type="number"
+            name="incidence"
+            placeholder="1 for yes and 0 for no"
+            required
+          />
+          <label for="depression_score"><h2>Depression_Score:</h2></label
+          ><input
+            class="form-control form-control-sm"
+            type="number"
+            name="depression_score"
+            placeholder="between 0 to 20"
+            required
+          />
+          <label for="adhd_score"><h2>ADHD-score:</h2></label
+          ><input
+            class="form-control form-control-sm"
+            name="adhd_score"
+            type="number"
+            placeholder="between 0 to 20"
+            required
+          />
+          <label for="anxiety_score"><h2>ANXIETY-SCORE:</h2></label
+          ><input
+            class="form-control form-control-sm"
+            name="anxiety_score"
+            type="number"
+            placeholder="between 0 to 20"
+            required
+          />
+          <!-- Add the "custom-button" class to the buttons you want to style and animate on hover -->
+{% comment %} <a href="http://localhost:5173/" class="btn btn-primary custom-button">HOME</a> {% endcomment %}
+
+<button type="submit" class="btn btn-primary custom-button">Submit</button>
+
+        </div>
+      </form>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
